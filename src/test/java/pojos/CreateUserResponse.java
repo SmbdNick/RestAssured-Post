@@ -1,0 +1,19 @@
+package pojos;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.Data;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import utils.DateDeserializer;
+
+import java.time.LocalDateTime;
+
+@Data
+public class CreateUserResponse {
+    private String name;
+    private String job;
+    private int id;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-DD'T'hh:mm:ss.SSSZ")
+    @JsonDeserialize(using = DateDeserializer.class)
+    private LocalDateTime createdAt;
+}
